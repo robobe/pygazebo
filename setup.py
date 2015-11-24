@@ -33,7 +33,7 @@ if sys.hexversion < 0x03040000:
 
 setup(
     name='pygazebo',
-    version='3.0.0-2014.1',
+    version='3.0.0-2015.11',
     description='Python bindings for the Gazebo multi-robot simulator.',
     long_description=readme + '\n\n' + history,
     author='Josh Pieper',

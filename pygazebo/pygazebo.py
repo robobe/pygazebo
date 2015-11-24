@@ -456,6 +456,17 @@ class _PublisherRecord(object):
         self.host = msg.host
         self.port = msg.port
 
+    def __str__(self):
+        return "%s %s %s:%s" % (self.topic, self.msg_type, self.host, self.port)
+
+    __repr__ = __str__
+
+    def __hash__(self):
+        return hash("%s:%s:%s" % (self.topic, self.host, self.port))
+
+    def __eq__(self, other):
+        return hash(self) == hash(other)
+
 
 class Manager(object):
     def __init__(self, address):
