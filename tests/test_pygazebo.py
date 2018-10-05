@@ -53,7 +53,7 @@ class PipeChannel(object):
             callback()
             return
 
-        future = asyncio.async(self.other.queue.put(data[0:1]))
+        future = asyncio.ensure_future(self.other.queue.put(data[0:1]))
         future.add_done_callback(lambda future: self.write(data[1:], callback))
 
     def write_frame(self, payload, callback):
@@ -89,7 +89,7 @@ class PipeChannel(object):
             callback(data)
             return
 
-        future = asyncio.async(self.queue.get())
+        future = asyncio.ensure_future(self.queue.get())
         future.add_done_callback(
             lambda future: self.recv_handler(
                 future.result(), data, total_size, callback))
@@ -236,7 +236,7 @@ class ManagerFixture(object):
         self.manager = manager_future.result()
 
     def connect(self, socket, addr):
-        print "connect, returning:", self.next_connect_socket
+        print ("connect, returning:", self.next_connect_socket)
         socket.pipe = self.next_connect_socket
         self.next_connect_socket = None
 
