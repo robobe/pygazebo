@@ -203,7 +203,7 @@ class FakeSocket(object):
 
 class ManagerFixture(object):
     def __init__(self):
-        print "ManagerFixture.__init__"
+        print ("ManagerFixture.__init__")
         self.manager = None
 
         self.server = MockServer()
