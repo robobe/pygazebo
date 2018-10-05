@@ -30,7 +30,7 @@ update-gazebo:
       cd pygazebo/msg; \
 		for file in *; \
             do protoname=`echo ${file} | rev | cut -c4- | rev`; \
-		 sed -i '' "s/import ${protoname}/from . import ${protoname}/g" *; \
+		 LC_ALL=C sed -i '' "s/import ${protoname}/from . import ${protoname}/g" *_pb2.py; \
 	 done \
 	done
 
