@@ -7,22 +7,22 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
-from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 
-from . import color_pb2
+from . import color_pb2 as color__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='shadows.proto',
   package='gazebo.msgs',
+  syntax='proto2',
+  options=None,
   serialized_pb=_b('\n\rshadows.proto\x12\x0bgazebo.msgs\x1a\x0b\x63olor.proto\"\xc5\x01\n\x07Shadows\x12-\n\x04type\x18\x05 \x01(\x0e\x32\x1f.gazebo.msgs.Shadows.ShadowType\x12!\n\x05\x63olor\x18\x06 \x01(\x0b\x32\x12.gazebo.msgs.Color\"h\n\nShadowType\x12\x14\n\x10STENCIL_ADDITIVE\x10\x01\x12\x16\n\x12STENCIL_MODULATIVE\x10\x02\x12\x14\n\x10TEXTURE_ADDITIVE\x10\x03\x12\x16\n\x12TEXTURE_MODULATIVE\x10\x04')
   ,
-  dependencies=[color_pb2.DESCRIPTOR,])
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+  dependencies=[color__pb2.DESCRIPTOR,])
 
 
 
@@ -70,14 +70,14 @@ _SHADOWS = _descriptor.Descriptor(
       has_default_value=False, default_value=1,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='color', full_name='gazebo.msgs.Shadows.color', index=1,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -87,6 +87,7 @@ _SHADOWS = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -95,9 +96,10 @@ _SHADOWS = _descriptor.Descriptor(
 )
 
 _SHADOWS.fields_by_name['type'].enum_type = _SHADOWS_SHADOWTYPE
-_SHADOWS.fields_by_name['color'].message_type = color_pb2._COLOR
+_SHADOWS.fields_by_name['color'].message_type = color__pb2._COLOR
 _SHADOWS_SHADOWTYPE.containing_type = _SHADOWS
 DESCRIPTOR.message_types_by_name['Shadows'] = _SHADOWS
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Shadows = _reflection.GeneratedProtocolMessageType('Shadows', (_message.Message,), dict(
   DESCRIPTOR = _SHADOWS,

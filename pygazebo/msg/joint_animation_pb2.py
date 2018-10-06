@@ -7,23 +7,22 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
-from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 
-from . import pose_pb2
-from . import time_pb2
+from . import time_pb2 as time__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='joint_animation.proto',
   package='gazebo.msgs',
-  serialized_pb=_b('\n\x15joint_animation.proto\x12\x0bgazebo.msgs\x1a\npose.proto\x1a\ntime.proto\"\x9d\x01\n\x0eJointAnimation\x12\x12\n\nmodel_name\x18\x01 \x02(\t\x12\x30\n\x05joint\x18\x02 \x03(\x0b\x32!.gazebo.msgs.JointAnimation.Joint\x12\x1f\n\x04time\x18\x03 \x03(\x0b\x32\x11.gazebo.msgs.Time\x1a$\n\x05Joint\x12\x0c\n\x04name\x18\x01 \x03(\t\x12\r\n\x05\x61ngle\x18\x02 \x03(\x01')
+  syntax='proto2',
+  options=None,
+  serialized_pb=_b('\n\x15joint_animation.proto\x12\x0bgazebo.msgs\x1a\ntime.proto\"\x9d\x01\n\x0eJointAnimation\x12\x12\n\nmodel_name\x18\x01 \x02(\t\x12\x30\n\x05joint\x18\x02 \x03(\x0b\x32!.gazebo.msgs.JointAnimation.Joint\x12\x1f\n\x04time\x18\x03 \x03(\x0b\x32\x11.gazebo.msgs.Time\x1a$\n\x05Joint\x12\x0c\n\x04name\x18\x01 \x03(\t\x12\r\n\x05\x61ngle\x18\x02 \x03(\x01')
   ,
-  dependencies=[pose_pb2.DESCRIPTOR,time_pb2.DESCRIPTOR,])
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+  dependencies=[time__pb2.DESCRIPTOR,])
 
 
 
@@ -41,14 +40,14 @@ _JOINTANIMATION_JOINT = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='angle', full_name='gazebo.msgs.JointAnimation.Joint.angle', index=1,
       number=2, type=1, cpp_type=5, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -57,11 +56,12 @@ _JOINTANIMATION_JOINT = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=184,
-  serialized_end=220,
+  serialized_start=172,
+  serialized_end=208,
 )
 
 _JOINTANIMATION = _descriptor.Descriptor(
@@ -77,21 +77,21 @@ _JOINTANIMATION = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='joint', full_name='gazebo.msgs.JointAnimation.joint', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='time', full_name='gazebo.msgs.JointAnimation.time', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -100,17 +100,19 @@ _JOINTANIMATION = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=63,
-  serialized_end=220,
+  serialized_start=51,
+  serialized_end=208,
 )
 
 _JOINTANIMATION_JOINT.containing_type = _JOINTANIMATION
 _JOINTANIMATION.fields_by_name['joint'].message_type = _JOINTANIMATION_JOINT
-_JOINTANIMATION.fields_by_name['time'].message_type = time_pb2._TIME
+_JOINTANIMATION.fields_by_name['time'].message_type = time__pb2._TIME
 DESCRIPTOR.message_types_by_name['JointAnimation'] = _JOINTANIMATION
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 JointAnimation = _reflection.GeneratedProtocolMessageType('JointAnimation', (_message.Message,), dict(
 

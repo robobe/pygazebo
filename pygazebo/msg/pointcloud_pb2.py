@@ -7,22 +7,22 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
-from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 
-from . import vector3d_pb2
+from . import vector3d_pb2 as vector3d__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='pointcloud.proto',
   package='gazebo.msgs',
+  syntax='proto2',
+  options=None,
   serialized_pb=_b('\n\x10pointcloud.proto\x12\x0bgazebo.msgs\x1a\x0evector3d.proto\"3\n\nPointCloud\x12%\n\x06points\x18\x01 \x03(\x0b\x32\x15.gazebo.msgs.Vector3d')
   ,
-  dependencies=[vector3d_pb2.DESCRIPTOR,])
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+  dependencies=[vector3d__pb2.DESCRIPTOR,])
 
 
 
@@ -40,7 +40,7 @@ _POINTCLOUD = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -49,6 +49,7 @@ _POINTCLOUD = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -56,8 +57,9 @@ _POINTCLOUD = _descriptor.Descriptor(
   serialized_end=100,
 )
 
-_POINTCLOUD.fields_by_name['points'].message_type = vector3d_pb2._VECTOR3D
+_POINTCLOUD.fields_by_name['points'].message_type = vector3d__pb2._VECTOR3D
 DESCRIPTOR.message_types_by_name['PointCloud'] = _POINTCLOUD
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 PointCloud = _reflection.GeneratedProtocolMessageType('PointCloud', (_message.Message,), dict(
   DESCRIPTOR = _POINTCLOUD,

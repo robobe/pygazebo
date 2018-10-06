@@ -7,23 +7,23 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
-from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 
-from . import pose_pb2
-from . import track_visual_pb2
+from . import pose_pb2 as pose__pb2
+from . import track_visual_pb2 as track__visual__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='gui_camera.proto',
   package='gazebo.msgs',
-  serialized_pb=_b('\n\x10gui_camera.proto\x12\x0bgazebo.msgs\x1a\npose.proto\x1a\x12track_visual.proto\"|\n\tGUICamera\x12\x0c\n\x04name\x18\x01 \x02(\t\x12\x17\n\x0fview_controller\x18\x02 \x01(\t\x12\x1f\n\x04pose\x18\x03 \x01(\x0b\x32\x11.gazebo.msgs.Pose\x12\'\n\x05track\x18\x04 \x01(\x0b\x32\x18.gazebo.msgs.TrackVisual')
+  syntax='proto2',
+  options=None,
+  serialized_pb=_b('\n\x10gui_camera.proto\x12\x0bgazebo.msgs\x1a\npose.proto\x1a\x12track_visual.proto\"\x95\x01\n\tGUICamera\x12\x0c\n\x04name\x18\x01 \x02(\t\x12\x17\n\x0fview_controller\x18\x02 \x01(\t\x12\x1f\n\x04pose\x18\x03 \x01(\x0b\x32\x11.gazebo.msgs.Pose\x12\'\n\x05track\x18\x04 \x01(\x0b\x32\x18.gazebo.msgs.TrackVisual\x12\x17\n\x0fprojection_type\x18\x05 \x01(\t')
   ,
-  dependencies=[pose_pb2.DESCRIPTOR,track_visual_pb2.DESCRIPTOR,])
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+  dependencies=[pose__pb2.DESCRIPTOR,track__visual__pb2.DESCRIPTOR,])
 
 
 
@@ -41,28 +41,35 @@ _GUICAMERA = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='view_controller', full_name='gazebo.msgs.GUICamera.view_controller', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='pose', full_name='gazebo.msgs.GUICamera.pose', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='track', full_name='gazebo.msgs.GUICamera.track', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='projection_type', full_name='gazebo.msgs.GUICamera.projection_type', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -71,16 +78,18 @@ _GUICAMERA = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=65,
-  serialized_end=189,
+  serialized_start=66,
+  serialized_end=215,
 )
 
-_GUICAMERA.fields_by_name['pose'].message_type = pose_pb2._POSE
-_GUICAMERA.fields_by_name['track'].message_type = track_visual_pb2._TRACKVISUAL
+_GUICAMERA.fields_by_name['pose'].message_type = pose__pb2._POSE
+_GUICAMERA.fields_by_name['track'].message_type = track__visual__pb2._TRACKVISUAL
 DESCRIPTOR.message_types_by_name['GUICamera'] = _GUICAMERA
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 GUICamera = _reflection.GeneratedProtocolMessageType('GUICamera', (_message.Message,), dict(
   DESCRIPTOR = _GUICAMERA,

@@ -7,22 +7,22 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
-from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 
-from . import propagation_particle_pb2
+from . import propagation_particle_pb2 as propagation__particle__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='propagation_grid.proto',
   package='gazebo.msgs',
+  syntax='proto2',
+  options=None,
   serialized_pb=_b('\n\x16propagation_grid.proto\x12\x0bgazebo.msgs\x1a\x1apropagation_particle.proto\"E\n\x0fPropagationGrid\x12\x32\n\x08particle\x18\x01 \x03(\x0b\x32 .gazebo.msgs.PropagationParticle')
   ,
-  dependencies=[propagation_particle_pb2.DESCRIPTOR,])
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+  dependencies=[propagation__particle__pb2.DESCRIPTOR,])
 
 
 
@@ -40,7 +40,7 @@ _PROPAGATIONGRID = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -49,6 +49,7 @@ _PROPAGATIONGRID = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -56,8 +57,9 @@ _PROPAGATIONGRID = _descriptor.Descriptor(
   serialized_end=136,
 )
 
-_PROPAGATIONGRID.fields_by_name['particle'].message_type = propagation_particle_pb2._PROPAGATIONPARTICLE
+_PROPAGATIONGRID.fields_by_name['particle'].message_type = propagation__particle__pb2._PROPAGATIONPARTICLE
 DESCRIPTOR.message_types_by_name['PropagationGrid'] = _PROPAGATIONGRID
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 PropagationGrid = _reflection.GeneratedProtocolMessageType('PropagationGrid', (_message.Message,), dict(
   DESCRIPTOR = _PROPAGATIONGRID,

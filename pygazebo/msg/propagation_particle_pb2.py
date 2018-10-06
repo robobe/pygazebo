@@ -7,7 +7,6 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
-from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
@@ -18,9 +17,10 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='propagation_particle.proto',
   package='gazebo.msgs',
+  syntax='proto2',
+  options=None,
   serialized_pb=_b('\n\x1apropagation_particle.proto\x12\x0bgazebo.msgs\"A\n\x13PropagationParticle\x12\t\n\x01x\x18\x01 \x02(\x01\x12\t\n\x01y\x18\x02 \x02(\x01\x12\x14\n\x0csignal_level\x18\x03 \x02(\x01')
 )
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
 
@@ -35,24 +35,24 @@ _PROPAGATIONPARTICLE = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='x', full_name='gazebo.msgs.PropagationParticle.x', index=0,
       number=1, type=1, cpp_type=5, label=2,
-      has_default_value=False, default_value=0,
+      has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='y', full_name='gazebo.msgs.PropagationParticle.y', index=1,
       number=2, type=1, cpp_type=5, label=2,
-      has_default_value=False, default_value=0,
+      has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='signal_level', full_name='gazebo.msgs.PropagationParticle.signal_level', index=2,
       number=3, type=1, cpp_type=5, label=2,
-      has_default_value=False, default_value=0,
+      has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -61,6 +61,7 @@ _PROPAGATIONPARTICLE = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -69,6 +70,7 @@ _PROPAGATIONPARTICLE = _descriptor.Descriptor(
 )
 
 DESCRIPTOR.message_types_by_name['PropagationParticle'] = _PROPAGATIONPARTICLE
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 PropagationParticle = _reflection.GeneratedProtocolMessageType('PropagationParticle', (_message.Message,), dict(
   DESCRIPTOR = _PROPAGATIONPARTICLE,

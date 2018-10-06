@@ -7,22 +7,22 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
-from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 
-from . import header_pb2
+from . import header_pb2 as header__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='test.proto',
   package='gazebo.msgs',
+  syntax='proto2',
+  options=None,
   serialized_pb=_b('\n\ntest.proto\x12\x0bgazebo.msgs\x1a\x0cheader.proto\"+\n\x04Test\x12#\n\x06header\x18\x01 \x02(\x0b\x32\x13.gazebo.msgs.Header')
   ,
-  dependencies=[header_pb2.DESCRIPTOR,])
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+  dependencies=[header__pb2.DESCRIPTOR,])
 
 
 
@@ -40,7 +40,7 @@ _TEST = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -49,6 +49,7 @@ _TEST = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -56,8 +57,9 @@ _TEST = _descriptor.Descriptor(
   serialized_end=84,
 )
 
-_TEST.fields_by_name['header'].message_type = header_pb2._HEADER
+_TEST.fields_by_name['header'].message_type = header__pb2._HEADER
 DESCRIPTOR.message_types_by_name['Test'] = _TEST
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Test = _reflection.GeneratedProtocolMessageType('Test', (_message.Message,), dict(
   DESCRIPTOR = _TEST,

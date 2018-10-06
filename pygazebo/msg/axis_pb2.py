@@ -7,22 +7,22 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
-from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 
-from . import vector3d_pb2
+from . import vector3d_pb2 as vector3d__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='axis.proto',
   package='gazebo.msgs',
-  serialized_pb=_b('\n\naxis.proto\x12\x0bgazebo.msgs\x1a\x0evector3d.proto\"\xa5\x01\n\x04\x41xis\x12\"\n\x03xyz\x18\x01 \x02(\x0b\x32\x15.gazebo.msgs.Vector3d\x12\x13\n\x0blimit_lower\x18\x02 \x02(\x01\x12\x13\n\x0blimit_upper\x18\x03 \x02(\x01\x12\x14\n\x0climit_effort\x18\x04 \x02(\x01\x12\x16\n\x0elimit_velocity\x18\x05 \x02(\x01\x12\x0f\n\x07\x64\x61mping\x18\x06 \x02(\x01\x12\x10\n\x08\x66riction\x18\x07 \x02(\x01')
+  syntax='proto2',
+  options=None,
+  serialized_pb=_b('\n\naxis.proto\x12\x0bgazebo.msgs\x1a\x0evector3d.proto\"\xc5\x01\n\x04\x41xis\x12\"\n\x03xyz\x18\x01 \x02(\x0b\x32\x15.gazebo.msgs.Vector3d\x12\x13\n\x0blimit_lower\x18\x02 \x02(\x01\x12\x13\n\x0blimit_upper\x18\x03 \x02(\x01\x12\x14\n\x0climit_effort\x18\x04 \x02(\x01\x12\x16\n\x0elimit_velocity\x18\x05 \x02(\x01\x12\x0f\n\x07\x64\x61mping\x18\x06 \x02(\x01\x12\x10\n\x08\x66riction\x18\x07 \x02(\x01\x12\x1e\n\x16use_parent_model_frame\x18\x08 \x02(\x08')
   ,
-  dependencies=[vector3d_pb2.DESCRIPTOR,])
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+  dependencies=[vector3d__pb2.DESCRIPTOR,])
 
 
 
@@ -40,49 +40,56 @@ _AXIS = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='limit_lower', full_name='gazebo.msgs.Axis.limit_lower', index=1,
       number=2, type=1, cpp_type=5, label=2,
-      has_default_value=False, default_value=0,
+      has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='limit_upper', full_name='gazebo.msgs.Axis.limit_upper', index=2,
       number=3, type=1, cpp_type=5, label=2,
-      has_default_value=False, default_value=0,
+      has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='limit_effort', full_name='gazebo.msgs.Axis.limit_effort', index=3,
       number=4, type=1, cpp_type=5, label=2,
-      has_default_value=False, default_value=0,
+      has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='limit_velocity', full_name='gazebo.msgs.Axis.limit_velocity', index=4,
       number=5, type=1, cpp_type=5, label=2,
-      has_default_value=False, default_value=0,
+      has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='damping', full_name='gazebo.msgs.Axis.damping', index=5,
       number=6, type=1, cpp_type=5, label=2,
-      has_default_value=False, default_value=0,
+      has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='friction', full_name='gazebo.msgs.Axis.friction', index=6,
       number=7, type=1, cpp_type=5, label=2,
-      has_default_value=False, default_value=0,
+      has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='use_parent_model_frame', full_name='gazebo.msgs.Axis.use_parent_model_frame', index=7,
+      number=8, type=8, cpp_type=7, label=2,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -91,15 +98,17 @@ _AXIS = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
   serialized_start=44,
-  serialized_end=209,
+  serialized_end=241,
 )
 
-_AXIS.fields_by_name['xyz'].message_type = vector3d_pb2._VECTOR3D
+_AXIS.fields_by_name['xyz'].message_type = vector3d__pb2._VECTOR3D
 DESCRIPTOR.message_types_by_name['Axis'] = _AXIS
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Axis = _reflection.GeneratedProtocolMessageType('Axis', (_message.Message,), dict(
   DESCRIPTOR = _AXIS,

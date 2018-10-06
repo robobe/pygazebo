@@ -7,7 +7,6 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
-from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
@@ -18,9 +17,10 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='cylindergeom.proto',
   package='gazebo.msgs',
+  syntax='proto2',
+  options=None,
   serialized_pb=_b('\n\x12\x63ylindergeom.proto\x12\x0bgazebo.msgs\".\n\x0c\x43ylinderGeom\x12\x0e\n\x06radius\x18\x01 \x02(\x01\x12\x0e\n\x06length\x18\x02 \x02(\x01')
 )
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
 
@@ -35,17 +35,17 @@ _CYLINDERGEOM = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='radius', full_name='gazebo.msgs.CylinderGeom.radius', index=0,
       number=1, type=1, cpp_type=5, label=2,
-      has_default_value=False, default_value=0,
+      has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='length', full_name='gazebo.msgs.CylinderGeom.length', index=1,
       number=2, type=1, cpp_type=5, label=2,
-      has_default_value=False, default_value=0,
+      has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -54,6 +54,7 @@ _CYLINDERGEOM = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -62,6 +63,7 @@ _CYLINDERGEOM = _descriptor.Descriptor(
 )
 
 DESCRIPTOR.message_types_by_name['CylinderGeom'] = _CYLINDERGEOM
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 CylinderGeom = _reflection.GeneratedProtocolMessageType('CylinderGeom', (_message.Message,), dict(
   DESCRIPTOR = _CYLINDERGEOM,

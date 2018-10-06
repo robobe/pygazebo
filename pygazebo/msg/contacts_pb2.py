@@ -7,23 +7,23 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
-from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 
-from . import contact_pb2
-from . import time_pb2
+from . import contact_pb2 as contact__pb2
+from . import time_pb2 as time__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='contacts.proto',
   package='gazebo.msgs',
+  syntax='proto2',
+  options=None,
   serialized_pb=_b('\n\x0e\x63ontacts.proto\x12\x0bgazebo.msgs\x1a\rcontact.proto\x1a\ntime.proto\"R\n\x08\x43ontacts\x12%\n\x07\x63ontact\x18\x01 \x03(\x0b\x32\x14.gazebo.msgs.Contact\x12\x1f\n\x04time\x18\x02 \x02(\x0b\x32\x11.gazebo.msgs.Time')
   ,
-  dependencies=[contact_pb2.DESCRIPTOR,time_pb2.DESCRIPTOR,])
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
+  dependencies=[contact__pb2.DESCRIPTOR,time__pb2.DESCRIPTOR,])
 
 
 
@@ -41,14 +41,14 @@ _CONTACTS = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='time', full_name='gazebo.msgs.Contacts.time', index=1,
       number=2, type=11, cpp_type=10, label=2,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -57,6 +57,7 @@ _CONTACTS = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -64,9 +65,10 @@ _CONTACTS = _descriptor.Descriptor(
   serialized_end=140,
 )
 
-_CONTACTS.fields_by_name['contact'].message_type = contact_pb2._CONTACT
-_CONTACTS.fields_by_name['time'].message_type = time_pb2._TIME
+_CONTACTS.fields_by_name['contact'].message_type = contact__pb2._CONTACT
+_CONTACTS.fields_by_name['time'].message_type = time__pb2._TIME
 DESCRIPTOR.message_types_by_name['Contacts'] = _CONTACTS
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Contacts = _reflection.GeneratedProtocolMessageType('Contacts', (_message.Message,), dict(
   DESCRIPTOR = _CONTACTS,
