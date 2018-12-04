@@ -26,7 +26,9 @@ class PyTest(TestCommand):
         errcode = pytest.main(self.test_args)
         sys.exit(errcode)
 
-install_requires = ['protobuf>=2.6']
+# Specify explicit protobuf dependency for python 3 support
+# -> Once 3.0 is released, this should be set to >= 3.0
+install_requires = ['protobuf>=3.0.0']
 
 if sys.hexversion < 0x03040000:
     install_requires.append('trollius')

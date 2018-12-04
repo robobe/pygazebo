@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from __future__ import print_function
+
 """
 test_pygazebo
 ----------------------------------
@@ -18,6 +20,9 @@ try:
     import asyncio
 except ImportError:
     import trollius as asyncio
+
+import sys
+_b=sys.version_info[0]<3 and (lambda x:x) or (lambda x:x.encode('latin1'))
 
 import mock
 import pytest
@@ -57,7 +62,7 @@ class PipeChannel(object):
         future.add_done_callback(lambda future: self.write(data[1:], callback))
 
     def write_frame(self, payload, callback):
-        header = '%08X' % len(payload)
+        header = _b('%08X' % len(payload))
 
         data = header + payload
 
@@ -81,7 +86,7 @@ class PipeChannel(object):
 
     def recv(self, length, callback):
         assert length <= 16384
-        self.recv_handler('', '', length, callback)
+        self.recv_handler(_b(''), _b(''), length, callback)
 
     def recv_handler(self, new_data, old_data, total_size, callback):
         data = old_data + new_data
@@ -108,8 +113,8 @@ class PipeChannel(object):
         except ValueError:
             return None
 
-        data = ''
-        self._read_frame_data('', data, size, callback)
+        data = _b('')
+        self._read_frame_data(_b(''), data, size, callback)
 
     def _read_frame_data(self, new_data, old_data, total_size, callback):
         data = old_data + new_data
@@ -203,7 +208,7 @@ class FakeSocket(object):
 
 class ManagerFixture(object):
     def __init__(self):
-        print ("ManagerFixture.__init__")
+        print("ManagerFixture.__init__")
         self.manager = None
 
         self.server = MockServer()
@@ -236,7 +241,7 @@ class ManagerFixture(object):
         self.manager = manager_future.result()
 
     def connect(self, socket, addr):
-        print ("connect, returning:", self.next_connect_socket)
+        print("connect, returning:", self.next_connect_socket)
         socket.pipe = self.next_connect_socket
         self.next_connect_socket = None
 
@@ -368,10 +373,10 @@ class TestPygazebo(object):
 
         # Write a frame to the pipe and see that it shows up in
         # received data.
-        other_pipe.endpointa.write_frame('testdata', lambda: None)
+        other_pipe.endpointa.write_frame(_b('testdata'), lambda: None)
         loop.run_until_complete(first_data_future)
         assert len(received_data) == 1
-        assert received_data[0] == 'testdata'
+        assert received_data[0] == _b('testdata')
 
     def test_send(self, manager):
         loop = asyncio.get_event_loop()
