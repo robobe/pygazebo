@@ -18,8 +18,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='rest_post.proto',
   package='gazebo.msgs',
   syntax='proto2',
-  options=None,
-  serialized_pb=_b('\n\x0frest_post.proto\x12\x0bgazebo.msgs\"\'\n\x08RestPost\x12\r\n\x05route\x18\x01 \x02(\t\x12\x0c\n\x04json\x18\x02 \x02(\t')
+  serialized_options=None,
+  serialized_pb=_b('\n\x0frest_post.proto\x12\x0bgazebo.msgs\"3\n\x08RestPost\x12\n\n\x02id\x18\x01 \x01(\r\x12\r\n\x05route\x18\x02 \x02(\t\x12\x0c\n\x04json\x18\x03 \x02(\t')
 )
 
 
@@ -33,33 +33,40 @@ _RESTPOST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='route', full_name='gazebo.msgs.RestPost.route', index=0,
-      number=1, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      name='id', full_name='gazebo.msgs.RestPost.id', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='json', full_name='gazebo.msgs.RestPost.json', index=1,
+      name='route', full_name='gazebo.msgs.RestPost.route', index=1,
       number=2, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='json', full_name='gazebo.msgs.RestPost.json', index=2,
+      number=3, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
   serialized_start=32,
-  serialized_end=71,
+  serialized_end=83,
 )
 
 DESCRIPTOR.message_types_by_name['RestPost'] = _RESTPOST

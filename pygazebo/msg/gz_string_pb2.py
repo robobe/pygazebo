@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='gz_string.proto',
   package='gazebo.msgs',
   syntax='proto2',
-  options=None,
+  serialized_options=None,
   serialized_pb=_b('\n\x0fgz_string.proto\x12\x0bgazebo.msgs\"\x18\n\x08GzString\x12\x0c\n\x04\x64\x61ta\x18\x01 \x02(\t')
 )
 
@@ -38,14 +38,14 @@ _GZSTRING = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],

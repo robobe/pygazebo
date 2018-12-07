@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='contacts.proto',
   package='gazebo.msgs',
   syntax='proto2',
-  options=None,
+  serialized_options=None,
   serialized_pb=_b('\n\x0e\x63ontacts.proto\x12\x0bgazebo.msgs\x1a\rcontact.proto\x1a\ntime.proto\"R\n\x08\x43ontacts\x12%\n\x07\x63ontact\x18\x01 \x03(\x0b\x32\x14.gazebo.msgs.Contact\x12\x1f\n\x04time\x18\x02 \x02(\x0b\x32\x11.gazebo.msgs.Time')
   ,
   dependencies=[contact__pb2.DESCRIPTOR,time__pb2.DESCRIPTOR,])
@@ -41,21 +41,21 @@ _CONTACTS = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='time', full_name='gazebo.msgs.Contacts.time', index=1,
       number=2, type=11, cpp_type=10, label=2,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],

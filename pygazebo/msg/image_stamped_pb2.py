@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='image_stamped.proto',
   package='gazebo.msgs',
   syntax='proto2',
-  options=None,
+  serialized_options=None,
   serialized_pb=_b('\n\x13image_stamped.proto\x12\x0bgazebo.msgs\x1a\ntime.proto\x1a\x0bimage.proto\"R\n\x0cImageStamped\x12\x1f\n\x04time\x18\x01 \x02(\x0b\x32\x11.gazebo.msgs.Time\x12!\n\x05image\x18\x02 \x02(\x0b\x32\x12.gazebo.msgs.Image')
   ,
   dependencies=[time__pb2.DESCRIPTOR,image__pb2.DESCRIPTOR,])
@@ -41,21 +41,21 @@ _IMAGESTAMPED = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='image', full_name='gazebo.msgs.ImageStamped.image', index=1,
       number=2, type=11, cpp_type=10, label=2,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],

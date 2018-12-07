@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='pointcloud.proto',
   package='gazebo.msgs',
   syntax='proto2',
-  options=None,
+  serialized_options=None,
   serialized_pb=_b('\n\x10pointcloud.proto\x12\x0bgazebo.msgs\x1a\x0evector3d.proto\"3\n\nPointCloud\x12%\n\x06points\x18\x01 \x03(\x0b\x32\x15.gazebo.msgs.Vector3d')
   ,
   dependencies=[vector3d__pb2.DESCRIPTOR,])
@@ -40,14 +40,14 @@ _POINTCLOUD = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],

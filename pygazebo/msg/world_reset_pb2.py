@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='world_reset.proto',
   package='gazebo.msgs',
   syntax='proto2',
-  options=None,
+  serialized_options=None,
   serialized_pb=_b('\n\x11world_reset.proto\x12\x0bgazebo.msgs\"T\n\nWorldReset\x12\x11\n\x03\x61ll\x18\x01 \x01(\x08:\x04true\x12\x18\n\ttime_only\x18\x02 \x01(\x08:\x05\x66\x61lse\x12\x19\n\nmodel_only\x18\x03 \x01(\x08:\x05\x66\x61lse')
 )
 
@@ -38,28 +38,28 @@ _WORLDRESET = _descriptor.Descriptor(
       has_default_value=True, default_value=True,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='time_only', full_name='gazebo.msgs.WorldReset.time_only', index=1,
       number=2, type=8, cpp_type=7, label=1,
       has_default_value=True, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='model_only', full_name='gazebo.msgs.WorldReset.model_only', index=2,
       number=3, type=8, cpp_type=7, label=1,
       has_default_value=True, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],

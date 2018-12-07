@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='planegeom.proto',
   package='gazebo.msgs',
   syntax='proto2',
-  options=None,
+  serialized_options=None,
   serialized_pb=_b('\n\x0fplanegeom.proto\x12\x0bgazebo.msgs\x1a\x0evector3d.proto\x1a\x0evector2d.proto\"e\n\tPlaneGeom\x12%\n\x06normal\x18\x01 \x02(\x0b\x32\x15.gazebo.msgs.Vector3d\x12#\n\x04size\x18\x02 \x02(\x0b\x32\x15.gazebo.msgs.Vector2d\x12\x0c\n\x01\x64\x18\x03 \x01(\x01:\x01\x30')
   ,
   dependencies=[vector3d__pb2.DESCRIPTOR,vector2d__pb2.DESCRIPTOR,])
@@ -41,28 +41,28 @@ _PLANEGEOM = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='size', full_name='gazebo.msgs.PlaneGeom.size', index=1,
       number=2, type=11, cpp_type=10, label=2,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='d', full_name='gazebo.msgs.PlaneGeom.d', index=2,
       number=3, type=1, cpp_type=5, label=1,
       has_default_value=True, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],

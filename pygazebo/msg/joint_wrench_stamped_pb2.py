@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='joint_wrench_stamped.proto',
   package='gazebo.msgs',
   syntax='proto2',
-  options=None,
+  serialized_options=None,
   serialized_pb=_b('\n\x1ajoint_wrench_stamped.proto\x12\x0bgazebo.msgs\x1a\x12joint_wrench.proto\x1a\ntime.proto\"X\n\x0b\x46orceTorque\x12(\n\x06wrench\x18\x01 \x03(\x0b\x32\x18.gazebo.msgs.JointWrench\x12\x1f\n\x04time\x18\x02 \x02(\x0b\x32\x11.gazebo.msgs.Time')
   ,
   dependencies=[joint__wrench__pb2.DESCRIPTOR,time__pb2.DESCRIPTOR,])
@@ -41,21 +41,21 @@ _FORCETORQUE = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='time', full_name='gazebo.msgs.ForceTorque.time', index=1,
       number=2, type=11, cpp_type=10, label=2,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],

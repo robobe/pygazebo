@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='wrench.proto',
   package='gazebo.msgs',
   syntax='proto2',
-  options=None,
+  serialized_options=None,
   serialized_pb=_b('\n\x0cwrench.proto\x12\x0bgazebo.msgs\x1a\x0evector3d.proto\"\x82\x01\n\x06Wrench\x12$\n\x05\x66orce\x18\x01 \x02(\x0b\x32\x15.gazebo.msgs.Vector3d\x12%\n\x06torque\x18\x02 \x02(\x0b\x32\x15.gazebo.msgs.Vector3d\x12+\n\x0c\x66orce_offset\x18\x03 \x01(\x0b\x32\x15.gazebo.msgs.Vector3d')
   ,
   dependencies=[vector3d__pb2.DESCRIPTOR,])
@@ -40,28 +40,28 @@ _WRENCH = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='torque', full_name='gazebo.msgs.Wrench.torque', index=1,
       number=2, type=11, cpp_type=10, label=2,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='force_offset', full_name='gazebo.msgs.Wrench.force_offset', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],

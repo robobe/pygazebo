@@ -18,8 +18,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='logical_camera_sensor.proto',
   package='gazebo.msgs',
   syntax='proto2',
-  options=None,
-  serialized_pb=_b('\n\x1blogical_camera_sensor.proto\x12\x0bgazebo.msgs\"^\n\x13LogicalCameraSensor\x12\x0c\n\x04near\x18\x01 \x02(\x01\x12\x0b\n\x03\x66\x61r\x18\x02 \x02(\x01\x12\x16\n\x0ehorizontal_fov\x18\x03 \x02(\x01\x12\x14\n\x0c\x61spect_ratio\x18\x04 \x02(\x01')
+  serialized_options=None,
+  serialized_pb=_b('\n\x1blogical_camera_sensor.proto\x12\x0bgazebo.msgs\"h\n\x13LogicalCameraSensor\x12\x11\n\tnear_clip\x18\x01 \x02(\x01\x12\x10\n\x08\x66\x61r_clip\x18\x02 \x02(\x01\x12\x16\n\x0ehorizontal_fov\x18\x03 \x02(\x01\x12\x14\n\x0c\x61spect_ratio\x18\x04 \x02(\x01')
 )
 
 
@@ -33,47 +33,47 @@ _LOGICALCAMERASENSOR = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='near', full_name='gazebo.msgs.LogicalCameraSensor.near', index=0,
+      name='near_clip', full_name='gazebo.msgs.LogicalCameraSensor.near_clip', index=0,
       number=1, type=1, cpp_type=5, label=2,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='far', full_name='gazebo.msgs.LogicalCameraSensor.far', index=1,
+      name='far_clip', full_name='gazebo.msgs.LogicalCameraSensor.far_clip', index=1,
       number=2, type=1, cpp_type=5, label=2,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='horizontal_fov', full_name='gazebo.msgs.LogicalCameraSensor.horizontal_fov', index=2,
       number=3, type=1, cpp_type=5, label=2,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='aspect_ratio', full_name='gazebo.msgs.LogicalCameraSensor.aspect_ratio', index=3,
       number=4, type=1, cpp_type=5, label=2,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
   serialized_start=44,
-  serialized_end=138,
+  serialized_end=148,
 )
 
 DESCRIPTOR.message_types_by_name['LogicalCameraSensor'] = _LOGICALCAMERASENSOR

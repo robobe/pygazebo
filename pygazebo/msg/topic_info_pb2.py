@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='topic_info.proto',
   package='gazebo.msgs',
   syntax='proto2',
-  options=None,
+  serialized_options=None,
   serialized_pb=_b('\n\x10topic_info.proto\x12\x0bgazebo.msgs\x1a\rpublish.proto\x1a\x0fsubscribe.proto\"r\n\tTopicInfo\x12\x10\n\x08msg_type\x18\x01 \x02(\t\x12\'\n\tpublisher\x18\x02 \x03(\x0b\x32\x14.gazebo.msgs.Publish\x12*\n\nsubscriber\x18\x03 \x03(\x0b\x32\x16.gazebo.msgs.Subscribe')
   ,
   dependencies=[publish__pb2.DESCRIPTOR,subscribe__pb2.DESCRIPTOR,])
@@ -41,28 +41,28 @@ _TOPICINFO = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='publisher', full_name='gazebo.msgs.TopicInfo.publisher', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='subscriber', full_name='gazebo.msgs.TopicInfo.subscriber', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='logical_camera_image.proto',
   package='gazebo.msgs',
   syntax='proto2',
-  options=None,
+  serialized_options=None,
   serialized_pb=_b('\n\x1alogical_camera_image.proto\x12\x0bgazebo.msgs\x1a\npose.proto\"\xa3\x01\n\x12LogicalCameraImage\x12\x1f\n\x04pose\x18\x01 \x02(\x0b\x32\x11.gazebo.msgs.Pose\x12\x34\n\x05model\x18\x02 \x03(\x0b\x32%.gazebo.msgs.LogicalCameraImage.Model\x1a\x36\n\x05Model\x12\x0c\n\x04name\x18\x01 \x02(\t\x12\x1f\n\x04pose\x18\x02 \x02(\x0b\x32\x11.gazebo.msgs.Pose')
   ,
   dependencies=[pose__pb2.DESCRIPTOR,])
@@ -40,21 +40,21 @@ _LOGICALCAMERAIMAGE_MODEL = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='pose', full_name='gazebo.msgs.LogicalCameraImage.Model.pose', index=1,
       number=2, type=11, cpp_type=10, label=2,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
@@ -77,21 +77,21 @@ _LOGICALCAMERAIMAGE = _descriptor.Descriptor(
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='model', full_name='gazebo.msgs.LogicalCameraImage.model', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[_LOGICALCAMERAIMAGE_MODEL, ],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],

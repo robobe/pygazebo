@@ -19,8 +19,8 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='factory.proto',
   package='gazebo.msgs',
   syntax='proto2',
-  options=None,
-  serialized_pb=_b('\n\rfactory.proto\x12\x0bgazebo.msgs\x1a\npose.proto\"z\n\x07\x46\x61\x63tory\x12\x0b\n\x03sdf\x18\x01 \x01(\t\x12\x14\n\x0csdf_filename\x18\x02 \x01(\t\x12\x1f\n\x04pose\x18\x03 \x01(\x0b\x32\x11.gazebo.msgs.Pose\x12\x11\n\tedit_name\x18\x04 \x01(\t\x12\x18\n\x10\x63lone_model_name\x18\x05 \x01(\t')
+  serialized_options=None,
+  serialized_pb=_b('\n\rfactory.proto\x12\x0bgazebo.msgs\x1a\npose.proto\"\x98\x01\n\x07\x46\x61\x63tory\x12\x0b\n\x03sdf\x18\x01 \x01(\t\x12\x14\n\x0csdf_filename\x18\x02 \x01(\t\x12\x1f\n\x04pose\x18\x03 \x01(\x0b\x32\x11.gazebo.msgs.Pose\x12\x11\n\tedit_name\x18\x04 \x01(\t\x12\x18\n\x10\x63lone_model_name\x18\x05 \x01(\t\x12\x1c\n\x0e\x61llow_renaming\x18\x06 \x01(\x08:\x04true')
   ,
   dependencies=[pose__pb2.DESCRIPTOR,])
 
@@ -40,49 +40,56 @@ _FACTORY = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='sdf_filename', full_name='gazebo.msgs.Factory.sdf_filename', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='pose', full_name='gazebo.msgs.Factory.pose', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='edit_name', full_name='gazebo.msgs.Factory.edit_name', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='clone_model_name', full_name='gazebo.msgs.Factory.clone_model_name', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='allow_renaming', full_name='gazebo.msgs.Factory.allow_renaming', index=5,
+      number=6, type=8, cpp_type=7, label=1,
+      has_default_value=True, default_value=True,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=42,
-  serialized_end=164,
+  serialized_start=43,
+  serialized_end=195,
 )
 
 _FACTORY.fields_by_name['pose'].message_type = pose__pb2._POSE

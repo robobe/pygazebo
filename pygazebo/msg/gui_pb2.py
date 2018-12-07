@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='gui.proto',
   package='gazebo.msgs',
   syntax='proto2',
-  options=None,
+  serialized_options=None,
   serialized_pb=_b('\n\tgui.proto\x12\x0bgazebo.msgs\x1a\x10gui_camera.proto\x1a\x0cplugin.proto\"f\n\x03GUI\x12\x12\n\nfullscreen\x18\x01 \x01(\x08\x12&\n\x06\x63\x61mera\x18\x02 \x01(\x0b\x32\x16.gazebo.msgs.GUICamera\x12#\n\x06plugin\x18\x03 \x03(\x0b\x32\x13.gazebo.msgs.Plugin')
   ,
   dependencies=[gui__camera__pb2.DESCRIPTOR,plugin__pb2.DESCRIPTOR,])
@@ -41,28 +41,28 @@ _GUI = _descriptor.Descriptor(
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='camera', full_name='gazebo.msgs.GUI.camera', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='plugin', full_name='gazebo.msgs.GUI.plugin', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],

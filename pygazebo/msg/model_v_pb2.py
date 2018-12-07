@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='model_v.proto',
   package='gazebo.msgs',
   syntax='proto2',
-  options=None,
+  serialized_options=None,
   serialized_pb=_b('\n\rmodel_v.proto\x12\x0bgazebo.msgs\x1a\x0bmodel.proto\"-\n\x07Model_V\x12\"\n\x06models\x18\x02 \x03(\x0b\x32\x12.gazebo.msgs.Model')
   ,
   dependencies=[model__pb2.DESCRIPTOR,])
@@ -40,14 +40,14 @@ _MODEL_V = _descriptor.Descriptor(
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None, file=DESCRIPTOR),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
   syntax='proto2',
   extension_ranges=[],
