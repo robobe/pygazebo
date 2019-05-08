@@ -72,6 +72,7 @@ class Publisher(object):
         """:class:`Publisher` should not be directly created"""
         self.topic = None
         self.msg_type = None
+        self._stop_connection = False
         self._listeners = []
         self._first_listener_ready = Event()
 
@@ -95,7 +96,9 @@ class Publisher(object):
         Note: Once :func:`remove` is called, no further methods should
         be called.
         """
-        raise NotImplementedError()
+        self._stop_connection = True
+        for conn in self._listeners:
+            conn.close()
 
     class WriteFuture(asyncio.Future):
         def __init__(self, publisher, connections):
@@ -150,6 +153,7 @@ class Subscriber(object):
         self.topic = None
         self.msg_type = None
         self.callback = None
+        self._stop_connection = False
 
         self._local_host = local_host
         self._local_port = local_port
@@ -162,7 +166,15 @@ class Subscriber(object):
         Note: Once :func:`remove` is called, the callback will no
         longer be invoked.
         """
-        raise NotImplementedError()
+        self._stop_connection = True
+        for conn in self._connections:
+            conn.close()
+
+    def _deallocate_connection(self, connection):
+        self._connections.remove(connection)
+        connection.close()
+        if len(self._connections) == 0:
+            self._connection_future = asyncio.Future()
 
     def wait_for_connection(self):
         return self._connection_future
@@ -172,7 +184,7 @@ class Subscriber(object):
         asyncio.get_event_loop().call_soon(self._connect, pub)
 
     def _connect(self, pub):
-        connection = _Connection()
+        connection = _Connection("subscriber_{}".format(self.topic))
 
         # Connect to the remote provider.
         future = connection.connect((pub.host, pub.port))
@@ -202,16 +214,17 @@ class Subscriber(object):
 
         if not self._connection_future.done():
             self._connection_future.set_result(None)
+        if self._stop_connection:
+            self._deallocate_connection(connection)
+            return
         future = connection.read_raw()
         future.add_done_callback(
             lambda future: self._handle_read(future, connection))
 
     def _handle_read(self, future, connection):
-        data = future.result()
+        data = None if self._stop_connection else future.result()
         if data is None:
-            self._connections.remove(connection)
-            if len(self._connections) == 0:
-                self._connection_future = asyncio.Future()
+            self._deallocate_connection(connection)
             return
 
         self.callback(data)
@@ -231,11 +244,13 @@ class _Connection(object):
     # this.
     BUF_SIZE = 16384
 
-    def __init__(self):
+    def __init__(self, name):
+        self.name = name
         self.address = None
         self.socket = None
         self._local_host = None
         self._local_port = None
+        self._closed = False
         self._socket_ready = Event()
         self._local_ready = Event()
 
@@ -251,16 +266,17 @@ class _Connection(object):
         future = asyncio.ensure_future(loop.sock_connect(self.socket, address))
 
         def callback_impl(future):
-            try:
-                future.result()  # check for exception
-                self._socket_ready.set()
-            except:
-                # Ignore all exceptions here, the user can deal with
-                # them if they want to since they have the future.
-                pass
+            future.result()
+            self._socket_ready.set()
 
         future.add_done_callback(callback_impl)
         return future
+
+    def close(self):
+        self._closed = True
+        asyncio.get_event_loop().remove_reader(self.socket.fileno())
+        asyncio.get_event_loop().remove_writer(self.socket.fileno())
+        self.socket.close()
 
     def serve(self, callback):
         """Start listening for new connections.  Invoke callback every
@@ -298,11 +314,15 @@ class _Connection(object):
         return result
 
     def handle_read_raw_header(self, future, result):
+        if self._closed:
+            return
+
         try:
             header = future.result()
             if len(header) < 8:
                 if not header:
                     self.socket.close()
+                    print("DISCONNECT ERROR ", self, self.name)
                     raise DisconnectError()
 
                 raise ParseError('malformed header: ' + str(header))
@@ -471,8 +491,9 @@ class _PublisherRecord(object):
 class Manager(object):
     def __init__(self, address):
         self._address = address
-        self._master = _Connection()
-        self._server = _Connection()
+        self._master = _Connection("Manager_master")
+        self._server = _Connection("Manager_server")
+        self._clients = []
         self._namespaces = []
         self._publisher_records = set()
         self._publishers = {}
@@ -480,6 +501,12 @@ class Manager(object):
 
     def start(self):
         return self._run()
+
+    def stop(self):
+        self._master.close()
+        self._server.close()
+        for conn in self._clients:
+            conn.close()
 
     def advertise(self, topic_name, msg_type):
         """Inform the Gazebo server of a topic we will publish.
@@ -658,10 +685,11 @@ class Manager(object):
         self._process_message(data)
 
     def _handle_server_connection(self, socket, remote_address):
-        this_connection = _Connection()
+        this_connection = _Connection("manager_client_n")
         this_connection.socket = socket
         this_connection._socket_ready.set()
 
+        self._clients.append(this_connection)
         self._read_server_data(this_connection)
 
     def _read_server_data(self, connection):
