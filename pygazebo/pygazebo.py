@@ -277,6 +277,8 @@ class _Connection(object):
         asyncio.get_event_loop().remove_reader(self.socket.fileno())
         asyncio.get_event_loop().remove_writer(self.socket.fileno())
         self.socket.close()
+        # for future in self.pending_futures:
+        #     future.cancel()
 
     def serve(self, callback):
         """Start listening for new connections.  Invoke callback every
