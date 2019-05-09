@@ -323,7 +323,7 @@ class _Connection(object):
             header = future.result()
             if len(header) < 8:
                 if not header:
-                    self.socket.close()
+                    self.close()
                     print("DISCONNECT ERROR ", self, self.name)
                     raise DisconnectError()
 
