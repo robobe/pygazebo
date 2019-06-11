@@ -218,8 +218,13 @@ class Subscriber(object):
             self._deallocate_connection(connection)
             return
         future = connection.read_raw()
-        future.add_done_callback(
-            lambda future: self._handle_read(future, connection))
+
+        def _callback(_future):
+            try:
+                self._handle_read(_future, connection)
+            except Exception as e:
+                _future.set_exception(e)
+        future.add_done_callback(_callback)
 
     def _handle_read(self, future, connection):
         data = None if self._stop_connection else future.result()
@@ -696,8 +701,13 @@ class Manager(object):
 
     def _read_server_data(self, connection):
         future = connection.read()
-        future.add_done_callback(
-            lambda future: self._handle_server_data(future, connection))
+
+        def _callback(_future):
+            try:
+                self._handle_server_data(_future, connection)
+            except Exception as e:
+                _future.set_exception(e)
+        future.add_done_callback(_callback)
 
     def _handle_server_data(self, future, connection):
         message = future.result()
@@ -709,7 +719,7 @@ class Manager(object):
                 msg.subscribe_pb2.Subscribe.FromString(
                     message.serialized_data))
         else:
-            logger.warn('Manager.handle_server_connection unknown msg:' +
+            logger.warning('Manager.handle_server_connection unknown msg:' +
                         str(message.type))
 
         self._read_server_data(connection)
