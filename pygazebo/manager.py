@@ -32,7 +32,7 @@ class Manager(object):
         await self._master.close()
         await self._server.close()
 
-    async def advertise(self, topic_name, msg_type):
+    async def advertise(self, topic_name: str, msg_type: str):
         """Inform the Gazebo server of a topic we will publish.
 
         :param topic_name: the topic to send data on

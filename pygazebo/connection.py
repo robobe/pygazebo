@@ -83,13 +83,13 @@ class Connection(object):
         self._writer.close()
         await self._writer.wait_closed()
 
-    async def write_packet(self, name, message):
+    async def write_packet(self, name: str, message):
         assert not self._closed
         packet = msg.packet_pb2.Packet()
         cur_time = time.time()
         packet.stamp.sec = int(cur_time)
         packet.stamp.nsec = int(math.fmod(cur_time, 1) * 1e9)
-        packet.type = name
+        packet.type = name.encode()
         packet.serialized_data = message.SerializeToString()
         await self._write(packet.SerializeToString())
 
@@ -103,7 +103,11 @@ class Connection(object):
         self._writer.write(header + data)
         await self._writer.drain()
 
-    async def read_packet(self):
+    async def read_raw(self):
+        """
+        Read incoming packet without parsing it
+        :return: byte array of the packet
+        """
         assert not self._closed
         header = await self._reader.readexactly(8)
         if len(header) < 8:
@@ -114,13 +118,11 @@ class Connection(object):
         except ValueError:
             raise ParseError('invalid header: ' + str(header))
 
-        # data = bytes()
-        # while len(data) < size:
-        #     data_part = await self._reader.read(size - len(data))
-        #     data += data_part
-
         data = await self._reader.readexactly(size)
+        return data
 
+    async def read_packet(self):
+        data = await self.read_raw()
         packet = msg.packet_pb2.Packet.FromString(data)
         return packet
 

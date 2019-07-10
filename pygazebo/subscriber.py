@@ -67,7 +67,7 @@ class Subscriber(object):
         self._connection_future.set_result(None)
 
         while not self._stop_connection:
-            data = await _connection.read_packet()
+            data = await _connection.read_raw()
             if data is None:
                 await self._deallocate_connection(_connection)
                 return
