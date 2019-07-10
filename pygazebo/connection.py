@@ -99,7 +99,6 @@ class Connection(object):
 
     async def _write(self, data):
         header = ('%08X' % len(data)).encode()
-        await self._writer.drain()
         self._writer.write(header + data)
         await self._writer.drain()
 
@@ -117,9 +116,9 @@ class Connection(object):
             size = int(header, 16)
         except ValueError:
             raise ParseError('invalid header: ' + str(header))
-
-        data = await self._reader.readexactly(size)
-        return data
+        else:
+            data = await self._reader.readexactly(size)
+            return data
 
     async def read_packet(self):
         data = await self.read_raw()
