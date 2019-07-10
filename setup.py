@@ -15,6 +15,7 @@ if sys.argv[-1] == 'publish':
 readme = open('README.rst').read()
 history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
+
 class PyTest(TestCommand):
     def finalize_options(self):
         TestCommand.finalize_options(self)
@@ -26,6 +27,7 @@ class PyTest(TestCommand):
         errcode = pytest.main(self.test_args)
         sys.exit(errcode)
 
+
 # Specify explicit protobuf dependency for python 3 support
 # -> Once 3.0 is released, this should be set to >= 3.0
 install_requires = ['protobuf>=3.0.0']
@@ -35,7 +37,7 @@ if sys.hexversion < 0x03040000:
 
 setup(
     name='pygazebo',
-    version='3.0.0-2015.11',
+    version='4.0.0-2019.07',
     description='Python bindings for the Gazebo multi-robot simulator.',
     long_description=readme + '\n\n' + history,
     author='Josh Pieper',

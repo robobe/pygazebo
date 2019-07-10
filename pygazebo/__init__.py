@@ -19,13 +19,19 @@ that python applications can seamlessly interact with Gazebo entities.
 pygazebo is based on eventlet for asynchronous network operations.
 """
 
-from .pygazebo import connect
+from .msg import gz_string_pb2
+from .msg import gz_string_v_pb2
+from .msg import packet_pb2
+from .msg import publishers_pb2
+from .msg import subscribe_pb2
+
+from .subscriber import Subscriber
+from .publisher import Publisher
 from .pygazebo import Manager
-from .pygazebo import Publisher
-from .pygazebo import Subscriber
+from .pygazebo import connect
 
 __all__ = ["connect", "Manager", "Publisher", "Subscriber"]
 
 __author__ = 'Josh Pieper'
 __email__ = 'jjp@pobox.com'
-__version__ = '2.2.1-2014.1'
+__version__ = '4.0.0-2019.07'
