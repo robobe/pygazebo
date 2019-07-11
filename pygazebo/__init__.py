@@ -19,6 +19,9 @@ that python applications can seamlessly interact with Gazebo entities.
 pygazebo is based on eventlet for asynchronous network operations.
 """
 
+import logging
+DEBUG_LEVEL = logging.CRITICAL
+
 from .msg import gz_string_pb2
 from .msg import gz_string_v_pb2
 from .msg import packet_pb2

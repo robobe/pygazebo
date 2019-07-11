@@ -6,7 +6,9 @@ from .publisher import Publisher, PublisherRecord
 from .subscriber import Subscriber
 from . import msg
 
+from . import DEBUG_LEVEL
 logger = logging.getLogger(__name__)
+logger.setLevel(DEBUG_LEVEL)
 
 
 class Manager(object):
@@ -53,7 +55,7 @@ class Manager(object):
         publisher = Publisher(topic=topic_name, msg_type=msg_type)
         self._publishers[topic_name] = publisher
 
-        await self._master.write_packet('advertise', to_send)
+        await self._master.write_packet('advertise', to_send, timeout=60)
         return publisher
 
     async def subscribe(self, topic_name: str, msg_type: str, callback):
@@ -84,7 +86,7 @@ class Manager(object):
                                 local_host=to_send.host,
                                 local_port=to_send.port)
         self._subscribers[topic_name] = subscriber
-        await self._master.write_packet('subscribe', to_send)
+        await self._master.write_packet('subscribe', to_send, timeout=60)
         return subscriber
 
     def publications(self):

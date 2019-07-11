@@ -1,6 +1,8 @@
 import asyncio
 import logging
+from . import DEBUG_LEVEL
 logger = logging.getLogger(__name__)
+logger.setLevel(DEBUG_LEVEL)
 
 
 class PublisherRecord(object):
@@ -43,9 +45,10 @@ class Publisher(object):
         self._listeners = []
         self._first_listener_promise = asyncio.Future()
 
-    async def publish(self, message):
+    async def publish(self, message, timeout=60):
         """Publish a new instance of this data.
 
+        :param timeout: timeout for the network request
         :param message: the message to publish
         :type message: :class:`google.protobuf.Message` instance
         """
@@ -55,16 +58,27 @@ class Publisher(object):
         # Try writing to each of our listeners.  If any give an error,
         # disconnect them.
         for connection in self._listeners:
-            future = connection.write(message)
+            future = connection.write(message, timeout=timeout)
             futures.append((future, connection))
 
         for future, connection in futures:
             try:
+                print(f'PUBLISHER AWAIT FUTURE {future}')
                 await future
             except Exception as e:
+                import sys
+                import traceback
+                print(f'write error, closing connection:{e}', file=sys.stderr)
+                traceback.print_exc()
                 logger.debug(f'write error, closing connection:{e}')
                 if connection in self._listeners:
                     self._listeners.remove(connection)
+                    connection.close()
+            except asyncio.TimeoutError as e:
+                logger.debug(f'write timeout, closing connection:{e}')
+                if connection in self._listeners:
+                    self._listeners.remove(connection)
+                    await connection.close()
 
     async def remove(self):
         """Stop advertising this topic.

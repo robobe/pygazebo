@@ -5,7 +5,38 @@ import logging
 from . import msg
 from .parse_error import ParseError
 
+from . import DEBUG_LEVEL
 logger = logging.getLogger(__name__)
+logger.setLevel(DEBUG_LEVEL)
+
+
+class DisconnectError(Exception):
+    def __init__(self,
+                 connection_name: str,
+                 server_addr: tuple,
+                 local_addr: tuple,
+                 discarded_bytes: int):
+        """
+        :param connection_name: Name of the connection
+        :param server_addr: remote address of the connection (address, port)
+        :type server_addr: tuple[str, int]
+        :param local_addr: local address of the connection (address, port)
+        :type local_addr: tuple[str, int]
+        :param discarded_bytes: number of bytes not read from the socket
+        """
+        self._connection_name = connection_name
+        self._server_addr = server_addr
+        self._local_addr = local_addr
+        self._discarded_bytes = discarded_bytes
+
+    @staticmethod
+    def _to_addr(addr):
+        return f'{addr[0]}:{addr[1]}'
+
+    def __str__(self):
+        return f'DisconnectError' \
+            f'({self._connection_name}: {self._to_addr(self._local_addr)} -> {self._to_addr(self._server_addr)})' \
+            f' bytes not collected: {self._discarded_bytes}'
 
 
 class Server(object):
@@ -80,10 +111,11 @@ class Connection(object):
         if self._closed:
             raise RuntimeError("Cannot closed an already closed connection")
 
+        self._writer.write_eof()
         self._writer.close()
         await self._writer.wait_closed()
 
-    async def write_packet(self, name: str, message):
+    async def write_packet(self, name: str, message, timeout):
         assert not self._closed
         packet = msg.packet_pb2.Packet()
         cur_time = time.time()
@@ -91,37 +123,50 @@ class Connection(object):
         packet.stamp.nsec = int(math.fmod(cur_time, 1) * 1e9)
         packet.type = name.encode()
         packet.serialized_data = message.SerializeToString()
-        await self._write(packet.SerializeToString())
+        await self._write(packet.SerializeToString(), timeout)
 
-    async def write(self, message):
+    async def write(self, message, timeout=None):
         data = message.SerializeToString()
-        await self._write(data)
+        await self._write(data, timeout)
 
-    async def _write(self, data):
+    async def _write(self, data, timeout):
         header = ('%08X' % len(data)).encode()
         self._writer.write(header + data)
-        await self._writer.drain()
+        await asyncio.wait_for(self._writer.drain(), timeout=timeout)
 
     async def read_raw(self):
         """
         Read incoming packet without parsing it
         :return: byte array of the packet
         """
-        assert not self._closed
-        header = await self._reader.readexactly(8)
-        if len(header) < 8:
-            raise ParseError('malformed header: ' + str(header))
-
+        header = None
         try:
-            size = int(header, 16)
-        except ValueError:
-            raise ParseError('invalid header: ' + str(header))
-        else:
-            data = await self._reader.readexactly(size)
-            return data
+            assert not self._closed
+            header = await self._reader.readexactly(8)
+            if len(header) < 8:
+                raise ParseError('malformed header: ' + str(header))
+
+            try:
+                size = int(header, 16)
+            except ValueError:
+                raise ParseError('invalid header: ' + str(header))
+            else:
+                data = await self._reader.readexactly(size)
+                return data
+        except asyncio.streams.IncompleteReadError as e:
+            if not self._closed:
+                local_addr, local_port = self._writer.transport.get_extra_info('sockname')
+                discarded_bytes = len(e.partial)
+                if header is not None:
+                    discarded_bytes += 8
+                raise DisconnectError(
+                    connection_name=self.name,
+                    server_addr=(self._address, self._port),
+                    local_addr=(local_port, local_addr),
+                    discarded_bytes=discarded_bytes
+                )
 
     async def read_packet(self):
         data = await self.read_raw()
         packet = msg.packet_pb2.Packet.FromString(data)
         return packet
-

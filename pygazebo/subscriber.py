@@ -2,7 +2,9 @@ import asyncio
 import logging
 from . import connection, msg
 
+from . import DEBUG_LEVEL
 logger = logging.getLogger(__name__)
+logger.setLevel(DEBUG_LEVEL)
 
 
 class Subscriber(object):
@@ -48,27 +50,32 @@ class Subscriber(object):
         asyncio.ensure_future(self._connect(pub))
 
     async def _connect(self, pub):
-        _connection = connection.Connection(f'subscriber_{self._topic}')
+        try:
+            _connection = connection.Connection(f'subscriber_{self._topic}')
 
-        # Connect to the remote provider.
-        await _connection.connect(pub.host, pub.port)
-        self._connections.append(_connection)
+            # Connect to the remote provider.
+            await _connection.connect(pub.host, pub.port)
+            self._connections.append(_connection)
 
-        # Send the initial message, which is encapsulated inside of a
-        # Packet structure.
-        to_send = msg.subscribe_pb2.Subscribe()
-        to_send.topic = pub.topic
-        to_send.host = self._local_host
-        to_send.port = self._local_port
-        to_send.msg_type = pub.msg_type
-        to_send.latching = False
+            # Send the initial message, which is encapsulated inside of a
+            # Packet structure.
+            to_send = msg.subscribe_pb2.Subscribe()
+            to_send.topic = pub.topic
+            to_send.host = self._local_host
+            to_send.port = self._local_port
+            to_send.msg_type = pub.msg_type
+            to_send.latching = False
 
-        await _connection.write_packet('sub', to_send)
-        self._connection_future.set_result(None)
+            await _connection.write_packet('sub', to_send, timeout=60)
+            self._connection_future.set_result(None)
 
-        while not self._stop_connection:
-            data = await _connection.read_raw()
-            if data is None:
-                await self._deallocate_connection(_connection)
-                return
-            self._callback(data)
+            while not self._stop_connection:
+                data = await _connection.read_raw()
+                if data is None:
+                    await self._deallocate_connection(_connection)
+                    return
+
+                self._callback(data)
+        except Exception as e:
+            logger.exception(f"EXCEPTION HANDLING THE SUBSCRIPTION: {e}")
+            raise e
