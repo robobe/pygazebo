@@ -63,7 +63,6 @@ class Publisher(object):
 
         for future, connection in futures:
             try:
-                print(f'PUBLISHER AWAIT FUTURE {future}')
                 await future
             except Exception as e:
                 import sys
