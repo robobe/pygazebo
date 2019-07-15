@@ -22,12 +22,17 @@ update-gazebo:
     echo "Gazebo must be installed to update message definitions"; \
     exit 1; \
   fi
-	rm -rf pygazebo/msg/*
+	rm -rf pygazebo/msg/*_pb2.py
 	for definition in \
 	  $$(find ${GAZEBO_INCLUDE_DIR}/gazebo/msgs/proto -name '*.proto'); \
       do protoc -I ${GAZEBO_INCLUDE_DIR}/gazebo/msgs/proto \
                 --python_out=pygazebo/msg $$definition; \
-	  done
+      cd pygazebo/msg; \
+		for file in *; \
+            do protoname=`echo ${file} | rev | cut -c4- | rev`; \
+		 LC_ALL=C sed -i '' "s/import ${protoname}/from . import ${protoname}/g" *_pb2.py; \
+	 done \
+	done
 
 clean: clean-build clean-pyc
 

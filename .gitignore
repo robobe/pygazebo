@@ -9,3 +9,4 @@
 .coverage
 _build
 dist
+.idea
