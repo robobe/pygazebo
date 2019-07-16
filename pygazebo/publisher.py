@@ -64,17 +64,17 @@ class Publisher(object):
         for future, connection in futures:
             try:
                 await future
+            except asyncio.TimeoutError as e:
+                logger.debug(f'write timeout, closing connection:{e}')
+                if connection in self._listeners:
+                    self._listeners.remove(connection)
+                    await connection.close()
             except Exception as e:
                 import sys
                 import traceback
                 print(f'write error, closing connection:{e}', file=sys.stderr)
                 traceback.print_exc()
                 logger.debug(f'write error, closing connection:{e}')
-                if connection in self._listeners:
-                    self._listeners.remove(connection)
-                    connection.close()
-            except asyncio.TimeoutError as e:
-                logger.debug(f'write timeout, closing connection:{e}')
                 if connection in self._listeners:
                     self._listeners.remove(connection)
                     await connection.close()
