@@ -35,8 +35,8 @@ class DisconnectError(Exception):
 
     def __str__(self):
         return f'DisconnectError' \
-            f'({self._connection_name}: {self._to_addr(self._local_addr)} -> {self._to_addr(self._server_addr)})' \
-            f' bytes not collected: {self._discarded_bytes}'
+            f'({self._connection_name}: {self._to_addr(self._local_addr)} -> {self._to_addr(self._server_addr)})' + \
+            (f' bytes not collected: {self._discarded_bytes}' if self._discarded_bytes is not None and self._discarded_bytes > 0 else '')
 
 
 class Server(object):
@@ -156,7 +156,7 @@ class Connection(object):
         except (ConnectionResetError, asyncio.streams.IncompleteReadError) as e:
             if not self._closed:
                 local_addr, local_port = self._writer.transport.get_extra_info('sockname')
-                discarded_bytes = len(e.partial)
+                discarded_bytes = len(e.partial) if isinstance(e, asyncio.streams.IncompleteReadError) else None
                 if header is not None:
                     discarded_bytes += 8
                 raise DisconnectError(
