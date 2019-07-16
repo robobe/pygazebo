@@ -1,3 +1,4 @@
+import concurrent
 import time
 import math
 import asyncio
@@ -68,8 +69,12 @@ class Server(object):
             await self._server.serve_forever()
 
     async def close(self):
-        self._server.shutdown()
-        await self._running_server
+        self._server.close()
+        await self._server.wait_closed()
+        try:
+            await self._running_server
+        except concurrent.futures.CancelledError:
+            pass
 
     @property
     def listen_host(self):
@@ -109,7 +114,9 @@ class Connection(object):
 
     async def close(self):
         if self._closed:
-            raise RuntimeError("Cannot closed an already closed connection")
+            logger.debug("Trying to close an already closed connection")
+            return
+        self._closed = True
 
         self._writer.write_eof()
         self._writer.close()
@@ -154,7 +161,9 @@ class Connection(object):
                 data = await self._reader.readexactly(size)
                 return data
         except (ConnectionResetError, asyncio.streams.IncompleteReadError) as e:
-            if not self._closed:
+            if self._closed:
+                return None
+            else:
                 local_addr, local_port = self._writer.transport.get_extra_info('sockname')
                 discarded_bytes = len(e.partial) if isinstance(e, asyncio.streams.IncompleteReadError) else None
                 if header is not None:
@@ -164,9 +173,10 @@ class Connection(object):
                     server_addr=(self._address, self._port),
                     local_addr=(local_port, local_addr),
                     discarded_bytes=discarded_bytes
-                )
+                ) from e
 
     async def read_packet(self):
         data = await self.read_raw()
-        packet = msg.packet_pb2.Packet.FromString(data)
-        return packet
+        if not self._closed:
+            packet = msg.packet_pb2.Packet.FromString(data)
+            return packet

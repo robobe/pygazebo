@@ -176,13 +176,8 @@ class Manager(object):
         # Enter the normal message dispatch loop.
         self._stop = False
         while not self._stop:
-            try:
-                message = await self._master.read_packet()
-            except asyncio.IncompleteReadError:
-                # ignore the connection message if closing
-                if not self._stop:
-                    raise
-            else:
+            message = await self._master.read_packet()
+            if not self._stop:
                 self._process_message(message)
 
     def _process_message(self, packet):
@@ -211,8 +206,8 @@ class Manager(object):
     async def _read_server_data(self, _connection):
         while not self._stop:
             message = await _connection.read_packet()
-            # if message is None:
-            #     return
+            if self._stop:
+                return
             if message.type == 'sub':
                 self._handle_server_sub(
                     _connection,
