@@ -153,7 +153,7 @@ class Connection(object):
             else:
                 data = await self._reader.readexactly(size)
                 return data
-        except asyncio.streams.IncompleteReadError as e:
+        except (ConnectionResetError, asyncio.streams.IncompleteReadError) as e:
             if not self._closed:
                 local_addr, local_port = self._writer.transport.get_extra_info('sockname')
                 discarded_bytes = len(e.partial)
