@@ -1,6 +1,7 @@
 import concurrent
 import time
 import math
+import sys
 import asyncio
 import logging
 from . import msg
@@ -9,6 +10,12 @@ from .parse_error import ParseError
 from . import DEBUG_LEVEL
 logger = logging.getLogger(__name__)
 logger.setLevel(DEBUG_LEVEL)
+
+
+async def _wait_closed(stream):
+    assert(sys.version_info.major >= 3)
+    if sys.version_info.minor >= 7:
+        await stream.wait_closed()
 
 
 class DisconnectError(Exception):
@@ -70,7 +77,7 @@ class Server(object):
 
     async def close(self):
         self._server.close()
-        await self._server.wait_closed()
+        await _wait_closed(self._server)
         try:
             await self._running_server
         except concurrent.futures.CancelledError:
@@ -120,7 +127,7 @@ class Connection(object):
 
         self._writer.write_eof()
         self._writer.close()
-        await self._writer.wait_closed()
+        await _wait_closed(self._writer)
 
     async def write_packet(self, name: str, message, timeout):
         assert not self._closed
