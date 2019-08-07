@@ -20,7 +20,7 @@ pygazebo is based on eventlet for asynchronous network operations.
 """
 
 import logging
-DEBUG_LEVEL = logging.CRITICAL
+DEBUG_LEVEL = logging.WARNING
 
 from .msg import gz_string_pb2
 from .msg import gz_string_v_pb2
