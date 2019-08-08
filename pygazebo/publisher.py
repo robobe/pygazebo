@@ -43,6 +43,7 @@ class Publisher(object):
         self._msg_type = msg_type
         self._stop_connection = False
         self._listeners = []
+        self._dead_connections = []
         self._first_listener_promise = asyncio.Future()
 
     async def publish(self, message, timeout=60):
@@ -58,26 +59,24 @@ class Publisher(object):
         # Try writing to each of our listeners.  If any give an error,
         # disconnect them.
         for connection in self._listeners:
-            future = connection.write(message, timeout=timeout)
+            future = asyncio.ensure_future(connection.write(message, timeout=timeout))
             futures.append((future, connection))
 
         for future, connection in futures:
             try:
                 await future
             except asyncio.TimeoutError as e:
-                logger.debug(f'write timeout, closing connection:{e}')
+                logger.exception(f'write timeout, removing connection:{e}')
                 if connection in self._listeners:
                     self._listeners.remove(connection)
-                    await connection.close()
+                    self._dead_connections.append(connection)
+                    # await connection.close()
             except Exception as e:
-                import sys
-                import traceback
-                print(f'write error, closing connection:{e}', file=sys.stderr)
-                traceback.print_exc()
-                logger.debug(f'write error, closing connection:{e}')
+                logger.exception(f'write error, removing connection:{e}')
                 if connection in self._listeners:
                     self._listeners.remove(connection)
-                    await connection.close()
+                    self._dead_connections.append(connection)
+                    # await connection.close()
 
     async def remove(self):
         """Stop advertising this topic.
@@ -86,8 +85,16 @@ class Publisher(object):
         be called.
         """
         self._stop_connection = True
+        closing = []
         for conn in self._listeners:
-            await conn.close()
+            closing.append(asyncio.ensure_future(asyncio.wait_for(conn.close())))
+        for conn in self._dead_connections:
+            closing.append(asyncio.ensure_future(asyncio.wait_for(conn.close())))
+        for close_await in closing:
+            try:
+                await close_await
+            except asyncio.TimeoutError:
+                pass
 
     def add_listener(self, connection):
         """
