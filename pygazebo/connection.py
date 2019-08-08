@@ -72,8 +72,11 @@ class Server(object):
         return self._listen_host, self._listen_port
 
     async def _server_loop(self):
-        async with self._server:
-            await self._server.serve_forever()
+        if sys.version_info.minor >= 7:
+            async with self._server:
+                await self._server.serve_forever()
+        else:
+            await self._server.wait_closed()
 
     async def close(self):
         self._server.close()
